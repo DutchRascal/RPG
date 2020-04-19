@@ -9,6 +9,7 @@ public class Mover : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     float agentSpeed;
+    Ray lastRay;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,17 @@ public class Mover : MonoBehaviour
     {
         if (agent && target)
         {
-            agent.destination = target.position;
-            agent.speed = agentSpeed;
+            if (Input.GetMouseButtonDown(0))
+            {
+                lastRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                agent.destination = target.position;
+                agent.speed = agentSpeed;
+            }
         }
+        else
+        {
+            Debug.LogWarning("MOVER: Update: No agent or target");
+        }
+        Debug.DrawRay(lastRay.origin, lastRay.direction * 100);
     }
 }
