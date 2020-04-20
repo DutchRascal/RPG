@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class Mover : MonoBehaviour
 {
     [SerializeField]
-    Transform target;
     NavMeshAgent agent;
 
     private void Start()
@@ -25,8 +24,9 @@ public class Mover : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("MOVER: Update: No agent or target");
+            Debug.LogWarning("MOVER: Update: No agent!");
         }
+        UpdateAnimator();
     }
 
     private void MoveToCursor()
@@ -38,5 +38,13 @@ public class Mover : MonoBehaviour
         {
             agent.destination = hit.point;
         }
+    }
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }
