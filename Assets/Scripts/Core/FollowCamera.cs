@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowCamera : MonoBehaviour
+namespace RPG.Core
 {
-    [SerializeField]
-    Transform target;
-
-    private void LateUpdate()
+    public class FollowCamera : MonoBehaviour
     {
-        if (target)
+        [SerializeField]
+        Transform target;
+
+        private void LateUpdate()
         {
-            transform.position = target.position;
-        }
-        else
-        {
-            Debug.LogWarning("FOLLOWCAMERA UPDATE: no target!");
+            if (target)
+            {
+                transform.position = target.position;
+            }
+            else
+            {
+                Debug.LogWarning("FOLLOWCAMERA UPDATE: no target!");
+            }
         }
     }
 }
