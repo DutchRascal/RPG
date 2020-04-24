@@ -1,12 +1,38 @@
+using RPG.Movement;
 using UnityEngine;
 
 namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour
     {
-        public void Attack(CombatTarget target)
+        [SerializeField] float weaponRange = 2f;
+        Transform target;
+        Mover mover;
+
+        private void Start()
         {
-            print("Take that!! " + target.name);
+            mover = GetComponent<Mover>();
+        }
+
+        private void Update()
+        {
+            if (target)
+            {
+                bool isInRange = Vector3.Distance(transform.position, target.position) < weaponRange;
+                if (target && !isInRange)
+                {
+                    mover.MoveTo(target.position);
+                }
+                else
+                {
+                    mover.Stop();
+                }
+            }
+        }
+
+        public void Attack(CombatTarget combatTarget)
+        {
+            target = combatTarget.transform;
         }
     }
 }
