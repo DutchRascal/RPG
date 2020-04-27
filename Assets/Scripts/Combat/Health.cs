@@ -18,6 +18,11 @@ namespace RPG.Combat
             }
         }
 
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
         private void Die()
         {
             if (!isDead)
