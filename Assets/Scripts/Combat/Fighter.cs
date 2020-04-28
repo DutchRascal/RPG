@@ -28,11 +28,21 @@ namespace RPG.Combat
         {
             timeSinceLastAttack += Time.deltaTime;
             if (!target) return;
+            // if (target.IsDead())
+            print(mover.NavMeshAgent.isStopped);
+
+            if (!mover.NavMeshAgent.isStopped)
+            {
+                animator.ResetTrigger("attack");
+                animator.SetTrigger("stopAttack");
+            }
+
             if (target.IsDead())
             {
                 animator.SetTrigger("stopAttack");
                 return;
             }
+
             if (!GetIsInRange())
             {
                 mover.MoveTo(target.transform.position);
@@ -51,14 +61,8 @@ namespace RPG.Combat
             {
                 // This will trigger the Hit() event.
                 TriggerAttack();
-                timeSinceLastAttack = 0;
+                timeSinceLastAttack = Mathf.Infinity;
             }
-        }
-
-        private void TriggerAttack()
-        {
-            animator.ResetTrigger("stopAttack");
-            animator.SetTrigger("attack");
         }
 
         //Animation Event
@@ -83,6 +87,12 @@ namespace RPG.Combat
         {
             StopAttack();
             target = null;
+        }
+
+        private void TriggerAttack()
+        {
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger("attack");
         }
 
         private void StopAttack()
