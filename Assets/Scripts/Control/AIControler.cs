@@ -1,5 +1,6 @@
 using RPG.Combat;
 using RPG.Core;
+using RPG.Movement;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,15 +9,22 @@ namespace RPG.Control
     public class AIControler : MonoBehaviour
     {
         [SerializeField] float chaseDistance = 5f;
+
         GameObject player;
         Fighter fighter;
         Health health;
+        Mover mover;
+
+        Vector3 guardPosition;
 
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
+
+            guardPosition = transform.position;
         }
 
         private void Update()
@@ -29,7 +37,7 @@ namespace RPG.Control
             }
             else
             {
-                fighter.Cancel();
+                mover.StartMoveAction(guardPosition);
             }
         }
 
