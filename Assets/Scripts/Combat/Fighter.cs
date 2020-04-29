@@ -29,7 +29,6 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
             if (!target) return;
             // if (target.IsDead())
-            print(mover.NavMeshAgent.isStopped);
 
             if (!mover.NavMeshAgent.isStopped)
             {
