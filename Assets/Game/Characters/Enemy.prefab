@@ -40,6 +40,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   suspicionTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  dwellWaitTime: 3
 --- !u!114 &8020775416421611857
 MonoBehaviour:
   m_ObjectHideFlags: 0
