@@ -42,7 +42,7 @@ MonoBehaviour:
   suspicionTime: 5
   patrolPath: {fileID: 0}
   waypointTolerance: 1
-  dwellWaitTime: 3
+  waypointDwellTime: 3
 --- !u!114 &8020775416421611857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,12 +65,12 @@ PrefabInstance:
     - target: {fileID: 8618259030624634693, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2446919616114486658, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.4254417
+      value: -0.19287872
       objectReference: {fileID: 0}
     - target: {fileID: 2446919616114486658, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 2446919616114486658, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.9368706
+      value: 26.203796
       objectReference: {fileID: 0}
     - target: {fileID: 2446919616114486658, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
