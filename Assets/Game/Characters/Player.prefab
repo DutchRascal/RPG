@@ -157,10 +157,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: health
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: weaponRange
       value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}

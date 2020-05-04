@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 8618259030624634693, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: m_Name
-      value: Enemy (2)
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2446919616114486658, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
@@ -122,19 +122,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: weaponRange
-      value: 1.4
+      propertyPath: health
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 925524804, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: health
-      value: 20
+      propertyPath: weaponRange
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
