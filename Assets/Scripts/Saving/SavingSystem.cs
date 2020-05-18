@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
@@ -13,8 +14,9 @@ namespace RPG.Saving
 
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
-                byte[] bytes = Encoding.UTF8.GetBytes("¡Hola Mundo! Bytes");
-                stream.Write(bytes, 0, bytes.Length);
+                Transform playerTransform = GetPlayerTransform();
+                byte[] buffer = SerializeVector(playerTransform.position);
+                stream.Write(buffer, 0, buffer.Length);
             }
         }
 
@@ -25,15 +27,38 @@ namespace RPG.Saving
             using (FileStream stream = File.Open(path, FileMode.Open))
             {
                 byte[] buffer = new byte[stream.Length];
-                UTF8Encoding data = new UTF8Encoding(true);
                 stream.Read(buffer, 0, buffer.Length);
-                print(data.GetString(buffer));
+                Transform playerTransform = GetPlayerTransform();
+                playerTransform.position = DeserializeVector(buffer);
             }
+        }
+
+        private byte[] SerializeVector(Vector3 vector)
+        {
+            byte[] vectorBytes = new byte[3 * 4];
+            BitConverter.GetBytes(vector.x).CopyTo(vectorBytes, 0);
+            BitConverter.GetBytes(vector.y).CopyTo(vectorBytes, 4);
+            BitConverter.GetBytes(vector.z).CopyTo(vectorBytes, 8);
+            return vectorBytes;
+        }
+
+        private Vector3 DeserializeVector(byte[] buffer)
+        {
+            Vector3 result = new Vector3();
+            result.x = BitConverter.ToSingle(buffer, 0);
+            result.y = BitConverter.ToSingle(buffer, 4);
+            result.z = BitConverter.ToSingle(buffer, 8);
+            return result;
         }
 
         private string GetPathFromSaveFile(string saveFile)
         {
             return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
+        }
+
+        private Transform GetPlayerTransform()
+        {
+            return GameObject.FindGameObjectWithTag("Player").transform;
         }
     }
 }
