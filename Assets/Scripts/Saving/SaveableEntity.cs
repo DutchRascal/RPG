@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace RPG.Saving
@@ -21,11 +22,19 @@ namespace RPG.Saving
         {
             print("Restoring state for " + GetUniqueIdentifier());
         }
-
+#if UNITy_EDITOR
         private void Update()
         {
             if (Application.IsPlaying(gameObject)) { return; }
-            print("Editing");
+            if (string.IsNullOrEmpty(gameObject.scene.path)) { return; }
+            SerializedObject serializedObject = new SerializedObject(this);
+            SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
+            if (string.IsNullOrEmpty(property.stringValue))
+            {
+                property.stringValue = System.Guid.NewGuid().ToString();
+                serializedObject.ApplyModifiedProperties();
+            }
         }
+#endif
     }
 }
