@@ -21,7 +21,6 @@ namespace RPG.Saving
             Dictionary<string, object> state = new Dictionary<string, object>();
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                print(saveable.GetType().ToString());
                 state[saveable.GetType().ToString()] = saveable.CaptureState();
             }
             return state;
@@ -39,7 +38,7 @@ namespace RPG.Saving
                 }
             }
         }
-
+#if UNITY_EDITOR
         private void Update()
         {
             if (Application.IsPlaying(gameObject)) { return; }
@@ -54,6 +53,7 @@ namespace RPG.Saving
             }
             globalLookup[property.stringValue] = this;
         }
+#endif
 
         private bool IsUnique(string candidate)
         {
