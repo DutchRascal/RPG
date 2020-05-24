@@ -46,9 +46,9 @@ namespace RPG.SceneManagement
             savingWrapper.Load();
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+            savingWrapper.Save();
             yield return new WaitForSeconds(fadeWaitTime);
             yield return fader.FadeIn(fadeInTime);
-            savingWrapper.Save();
             Destroy(gameObject);
         }
 
