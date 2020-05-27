@@ -9,6 +9,8 @@ namespace RPG.Combat
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
 
         Health target;
         Mover mover;
@@ -22,6 +24,7 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
+            SpawnWeapon();
         }
 
         private void Update()
@@ -106,6 +109,12 @@ namespace RPG.Combat
             if (!combatTarget) { return false; }
             Health targetToTest = combatTarget.GetComponent<Health>();
             return (targetToTest && !targetToTest.IsDead());
+        }
+
+        public void SpawnWeapon()
+        {
+            if (!weaponPrefab && !handTransform) { return; }
+            GameObject weapon = Instantiate(weaponPrefab, handTransform);
         }
     }
 }
