@@ -1170,7 +1170,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511114939}
-  m_LocalRotation: {x: -0.04769223, y: 0.9520108, z: -0.22561392, w: -0.20124432}
+  m_LocalRotation: {x: -0.04769225, y: 0.9520108, z: -0.22561395, w: -0.20124437}
   m_LocalPosition: {x: 23.1, y: 19.68, z: 28.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1636,6 +1636,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -200
       objectReference: {fileID: 0}
+    - target: {fileID: 4076613834879609972, guid: 17231a9d913d14eda80745b78c9a6cef,
+        type: 3}
+      propertyPath: weaponOverride
+      value: 
+      objectReference: {fileID: 22100000, guid: 55c66f9fc3207401b80a88f22aaaeb7c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17231a9d913d14eda80745b78c9a6cef, type: 3}
 --- !u!4 &812614746 stripped
@@ -2573,7 +2579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075904453}
-  m_LocalRotation: {x: 0.13948442, y: 0.4762825, z: -0.07682426, w: 0.86475265}
+  m_LocalRotation: {x: 0.13948444, y: 0.47628254, z: -0.076824285, w: 0.86475265}
   m_LocalPosition: {x: -21.850718, y: 1.2988992, z: -7.634683}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4673,7 +4679,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144776170}
-  m_LocalRotation: {x: -0.0019745245, y: 0.9455889, z: -0.32530746, w: -0.005740264}
+  m_LocalRotation: {x: -0.0019745145, y: 0.9455889, z: -0.32530743, w: -0.0057402356}
   m_LocalPosition: {x: 3.1, y: 16.07, z: 28.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

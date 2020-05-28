@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
@@ -6,12 +7,9 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1;
-        [SerializeField] float weaponDamage = 5f;
-        [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] AnimatorOverrideController weaponOverride = null;
+        [SerializeField] Weapon weapon = null;
 
         Health target;
         Mover mover;
@@ -72,12 +70,12 @@ namespace RPG.Combat
         void Hit()
         {
             if (!target) { return; }
-            target.TakeDamage(weaponDamage);
+            target.TakeDamage(weapon.WeaponDamage);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weapon.WeaponRange;
         }
 
         public void Attack(GameObject combatTarget)
@@ -114,10 +112,9 @@ namespace RPG.Combat
 
         public void SpawnWeapon()
         {
-            if (!weaponPrefab && !handTransform) { return; }
-            GameObject weapon = Instantiate(weaponPrefab, handTransform);
+            if (!weapon) { return; }
             Animator animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = weaponOverride;
+            weapon.Spawn(handTransform, animator);
         }
     }
 }
