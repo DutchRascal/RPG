@@ -1,4 +1,3 @@
-using System;
 using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
@@ -9,12 +8,13 @@ namespace RPG.Combat
     {
         [SerializeField] float timeBetweenAttacks = 1;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon = null;
+        [SerializeField] Weapon defaultWeapon = null;
 
         Health target;
         Mover mover;
         Animator animator;
         ActionScheduler actionScheduler;
+        Weapon currentWeapon = null;
 
         float timeSinceLastAttack = 0;
 
@@ -23,7 +23,7 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -70,12 +70,12 @@ namespace RPG.Combat
         void Hit()
         {
             if (!target) { return; }
-            target.TakeDamage(weapon.WeaponDamage);
+            target.TakeDamage(currentWeapon.WeaponDamage);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weapon.WeaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.WeaponRange;
         }
 
         public void Attack(GameObject combatTarget)
@@ -110,9 +110,9 @@ namespace RPG.Combat
             return (targetToTest && !targetToTest.IsDead());
         }
 
-        public void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
-            if (!weapon) { return; }
+            currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(handTransform, animator);
         }

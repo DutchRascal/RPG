@@ -158,6 +158,12 @@ PrefabInstance:
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 6789474629077506095}
+    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 656a6a456cbda431da462b78cbebdaae,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
 --- !u!1 &5366392738997371568 stripped
