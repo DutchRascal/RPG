@@ -71,13 +71,20 @@ namespace RPG.Combat
         void Hit()
         {
             if (!target) { return; }
-            target.TakeDamage(currentWeapon.WeaponDamage);
+            if (!currentWeapon.HasProjectile())
+            {
+                target.TakeDamage(currentWeapon.WeaponDamage);
+            }
+            else
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
         }
 
+        //Animation Event
         void Shoot()
         {
-            if (!target) { return; }
-            target.TakeDamage(currentWeapon.WeaponDamage);
+            Hit();
         }
 
         private bool GetIsInRange()
