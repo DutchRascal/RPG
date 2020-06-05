@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using UnityEngine;
 
@@ -17,17 +18,36 @@ namespace RPG.Combat
         public float WeaponRange { get => weaponRange; }
         public Projectile Projectile { get => projectile; }
 
+        const string weaponName = "Weapon";
+
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
+            DestroyOldWeapon(rightHand, leftHand);
             if (equippedPrefab)
             {
                 Transform handTransfrom = GetTransform(rightHand, leftHand);
-                Instantiate(equippedPrefab, handTransfrom);
+                GameObject weapon = Instantiate(equippedPrefab, handTransfrom);
+                weapon.name = weaponName;
             }
             if (animatorOverride)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform oldWeapon = rightHand.Find(weaponName);
+            if (!oldWeapon)
+            {
+                oldWeapon = leftHand.Find(weaponName);
+            }
+            if (!oldWeapon)
+            {
+                return;
+            }
+            oldWeapon.name = "DESTROYING";
+            Destroy(oldWeapon.gameObject);
         }
 
         private Transform GetTransform(Transform rightHand, Transform leftHand)

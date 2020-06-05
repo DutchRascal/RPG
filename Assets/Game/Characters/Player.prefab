@@ -30,6 +30,19 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!65 &4371272870083235023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2952494656062799927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 3}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &2573292229196541345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,19 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0053132a0dc3a42bb973a25f8c52c157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &4371272870083235023
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2952494656062799927}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 3}
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1001 &6551505538866690006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,6 +274,12 @@ PrefabInstance:
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 6551505538866290234}
+    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 656a6a456cbda431da462b78cbebdaae,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
 --- !u!1 &2952494656062799927 stripped

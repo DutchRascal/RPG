@@ -36,7 +36,7 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            print($"OnTriggerEnter - {other.name} - {target}");
+            // print($"OnTriggerEnter - {other.name} - {target}");
             if (other.GetComponent<Health>() != target) { return; }
             target.TakeDamage(damage);
             Destroy(gameObject);
