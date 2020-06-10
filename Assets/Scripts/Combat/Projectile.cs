@@ -46,14 +46,18 @@ namespace RPG.Combat
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<Health>() != target) { return; }
-            if (target.IsDead()) { return; }
+            if (target.IsDead())
+            {
+                Invoke("RemoveObject", 5f);
+                return; ;
+            }
             target.TakeDamage(damage);
-            Destroy(gameObject);
+            RemoveObject();
         }
 
-        // private void OnBecameInvisible()
-        // {
-        //     Destroy(gameObject);
-        // }
+        void RemoveObject()
+        {
+            Destroy(gameObject);
+        }
     }
 }
