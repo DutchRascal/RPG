@@ -1710,7 +1710,8 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 027e5b8bcd6ba4ba39fc5b49a7252b87,
+        type: 2}
     - target: {fileID: 2840888356609490120, guid: 17231a9d913d14eda80745b78c9a6cef,
         type: 3}
       propertyPath: m_IsTrigger
@@ -3007,6 +3008,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 835e622a816b24c2692103d195e3b7b8,
         type: 2}
+    - target: {fileID: 8634209650704692031, guid: a5abb35d80ada4e7f9a31197bf6aebe1,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: Bow Red
+      objectReference: {fileID: 0}
     - target: {fileID: 4022807211809967926, guid: a5abb35d80ada4e7f9a31197bf6aebe1,
         type: 3}
       propertyPath: uniqueIdentifier
@@ -4925,7 +4931,7 @@ PrefabInstance:
     - target: {fileID: 521897587409541480, guid: 7174e6192c2ed4388b6a06eccb6a060c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6612053
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 521897587409541480, guid: 7174e6192c2ed4388b6a06eccb6a060c,
         type: 3}
@@ -4935,7 +4941,7 @@ PrefabInstance:
     - target: {fileID: 521897587409541480, guid: 7174e6192c2ed4388b6a06eccb6a060c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.252274
+      value: 43.9
       objectReference: {fileID: 0}
     - target: {fileID: 521897587409541480, guid: 7174e6192c2ed4388b6a06eccb6a060c,
         type: 3}
