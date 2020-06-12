@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &5500074880287290723
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366392738997371568}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!136 &988910127482878325
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -56,22 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0053132a0dc3a42bb973a25f8c52c157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &5500074880287290723
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5366392738997371568}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &4459536899736045045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,12 +176,6 @@ PrefabInstance:
       objectReference: {fileID: 6789474629077506095}
     - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: defaultWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 656a6a456cbda431da462b78cbebdaae,
-        type: 2}
-    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
-        type: 3}
       propertyPath: rightHandTransform
       value: 
       objectReference: {fileID: 6789474629077506095}
@@ -190,6 +184,12 @@ PrefabInstance:
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 6789474629077448749}
+    - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: dbb295f9b7e754607a24cc9da72c0250,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
 --- !u!1 &5366392738997371568 stripped
