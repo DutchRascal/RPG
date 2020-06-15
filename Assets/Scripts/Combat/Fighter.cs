@@ -1,7 +1,8 @@
-using RPG.Core;
 using RPG.Movement;
 using RPG.Saving;
 using UnityEngine;
+using RPG.Resources;
+using RPG.Core;
 
 namespace RPG.Combat
 {
@@ -145,7 +146,7 @@ namespace RPG.Combat
         {
             if (state == null) { return; }
             string weaponName = (string)state;
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             if (weapon)
             {
                 EquipWeapon(weapon);
