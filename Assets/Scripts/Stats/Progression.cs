@@ -21,11 +21,24 @@ namespace RPG.Stats
             return 0;
         }
 
+        public float GetXP(CharacterClass characterClass)
+        {
+            foreach (ProgressionCharacterClass progressionClass in characterClasses)
+            {
+                if (progressionClass.characterClass == characterClass)
+                {
+                    return progressionClass.XP;
+                }
+            }
+            return 10;
+        }
+
         [System.Serializable]
         class ProgressionCharacterClass
         {
             public CharacterClass characterClass;
             public float[] health;
+            public float XP;
         }
     }
 }
