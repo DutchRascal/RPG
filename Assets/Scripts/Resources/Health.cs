@@ -15,6 +15,7 @@ namespace RPG.Resources
         {
             healthPoints = GetComponent<BaseStats>().GetHealth();
         }
+
         public void TakeDamage(float damage)
         {
             healthPoints = Mathf.Max(0, healthPoints - damage);
@@ -37,6 +38,11 @@ namespace RPG.Resources
                 GetComponent<Animator>().SetTrigger("die");
                 SetDeathState();
             }
+        }
+
+        public float GetPercentage()
+        {
+            return healthPoints * 100 / GetComponent<BaseStats>().GetHealth();
         }
 
         private void SetDeathState()
