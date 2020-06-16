@@ -5,19 +5,9 @@ using UnityEngine.UI;
 
 namespace RPG.Resources
 {
-    public class HealthDisplay : MonoBehaviour, ISaveable
+    public class HealthDisplay : MonoBehaviour
     {
         Health health;
-
-        public object CaptureState()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RestoreState(object state)
-        {
-            throw new System.NotImplementedException();
-        }
 
         private void Awake()
         {
