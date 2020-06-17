@@ -8,7 +8,6 @@ namespace RPG.Resources
 
         public void GainExperience(float experience)
         {
-            print($"{experiencePoints} / {experience}");
             experiencePoints += experience;
         }
     }
