@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +20,12 @@ namespace RPG.Stats
             }
 
             return lookupTable[characterClass][stat][level - 1];
+        }
+
+        public int GetLevels(Stat stat, CharacterClass characterClass)
+        {
+            BuildLookup();
+            return lookupTable[characterClass][stat].Length;
         }
 
         private void BuildLookup()

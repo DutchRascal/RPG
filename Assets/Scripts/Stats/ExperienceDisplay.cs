@@ -1,8 +1,7 @@
-using RPG.Resources;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Combat
+namespace RPG.Stats
 {
     public class ExperienceDisplay : MonoBehaviour
     {
