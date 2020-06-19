@@ -23,12 +23,12 @@ namespace RPG.Stats
             for (int level = 1; level < penultimateLevel; level++)
             {
                 float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
-                if (XPToLevelUp > currentXP)
+                if (XPToLevelUp >= currentXP)
                 {
                     return level;
                 }
             }
-            return penultimateLevel + 1;
+            return penultimateLevel;
         }
     }
 }
