@@ -13,18 +13,22 @@ namespace RPG.Stats
 
         private void Start()
         {
-            currentLevel = GetLevel();
+            currentLevel = CalculateLevel();
+            Experience experience = GetComponent<Experience>();
+            if (experience)
+            {
+                experience.onExperienceGained += UpdateLevel;
+            }
         }
 
-        private void Update()
+        private void UpdateLevel()
         {
-            int newLevel = GetLevel();
+            int newLevel = CalculateLevel();
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
                 print("Levelled Up!");
             }
-
         }
 
         public float GetStat(Stat stat)
@@ -34,6 +38,10 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
+            if (currentLevel < 1)
+            {
+                currentLevel = CalculateLevel();
+            }
             return currentLevel;
         }
 
