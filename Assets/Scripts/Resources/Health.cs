@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
@@ -7,25 +8,33 @@ namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
+        [SerializeField] float regenerationPercentage = 70;
+
         float healthPoints = -1f;
 
         bool isDead = false;
+
+        BaseStats baseStats;
+        // float currentPercentage;
 
         private void Start()
         {
             if (healthPoints < 0)
             {
-                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+                baseStats = GetComponent<BaseStats>();
+                healthPoints = baseStats.GetStat(Stat.Health);
+                baseStats.onLevelUp += RegenerateHealth;
+                // currentPercentage = GetPercentage();
             }
         }
 
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints = Mathf.Max(0, healthPoints - damage);
+            // currentPercentage = GetPercentage();
             if (healthPoints == 0)
             {
                 Die();
-
                 AwardExperience(instigator);
             }
         }
@@ -33,6 +42,15 @@ namespace RPG.Resources
         public bool IsDead()
         {
             return isDead;
+        }
+
+        private void RegenerateHealth()
+        {
+            float regenHealthPoints = baseStats.GetStat(Stat.Health) * regenerationPercentage / 100;
+            healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
+            // float newMaxHealth = baseStats.GetStat(Stat.Health);
+            // healthPoints = currentPercentage * newMaxHealth / 100;
+            // currentPercentage = GetPercentage();
         }
 
         private void Die()
@@ -49,12 +67,12 @@ namespace RPG.Resources
         {
             Experience experience = instigator.GetComponent<Experience>();
             if (!experience) { return; }
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+            experience.GainExperience(baseStats.GetStat(Stat.ExperienceReward));
         }
 
         public float GetPercentage()
         {
-            return healthPoints * 100 / GetComponent<BaseStats>().GetStat(Stat.Health);
+            return healthPoints * 100 / baseStats.GetStat(Stat.Health);
         }
 
         private void SetDeathState()
