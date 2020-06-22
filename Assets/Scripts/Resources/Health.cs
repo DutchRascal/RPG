@@ -24,14 +24,13 @@ namespace RPG.Resources
                 baseStats = GetComponent<BaseStats>();
                 healthPoints = baseStats.GetStat(Stat.Health);
                 baseStats.onLevelUp += RegenerateHealth;
-                // currentPercentage = GetPercentage();
             }
         }
 
         public void TakeDamage(GameObject instigator, float damage)
         {
+            print(gameObject.name + " took damage: " + damage);
             healthPoints = Mathf.Max(0, healthPoints - damage);
-            // currentPercentage = GetPercentage();
             if (healthPoints == 0)
             {
                 Die();
@@ -48,9 +47,6 @@ namespace RPG.Resources
         {
             float regenHealthPoints = baseStats.GetStat(Stat.Health) * regenerationPercentage / 100;
             healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
-            // float newMaxHealth = baseStats.GetStat(Stat.Health);
-            // healthPoints = currentPercentage * newMaxHealth / 100;
-            // currentPercentage = GetPercentage();
         }
 
         private void Die()
@@ -70,9 +66,14 @@ namespace RPG.Resources
             experience.GainExperience(baseStats.GetStat(Stat.ExperienceReward));
         }
 
-        public float GetPercentage()
+        public float GetHealthPoints()
         {
-            return healthPoints * 100 / baseStats.GetStat(Stat.Health);
+            return healthPoints;
+        }
+
+        public float GetMaxHealthPoints()
+        {
+            return baseStats.GetStat(Stat.Health);
         }
 
         private void SetDeathState()

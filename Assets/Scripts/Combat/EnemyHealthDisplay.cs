@@ -17,10 +17,10 @@ namespace RPG.Combat
         private void Update()
         {
             string textValue = "N/A";
-            Health target = fighter.GetTarget();
-            if (target)
+            Health health = fighter.GetTarget();
+            if (health)
             {
-                textValue = string.Format("{0:0}%", target.GetPercentage());
+                textValue = string.Format("{0:0}/{1:0}", health.GetHealthPoints(), health.GetMaxHealthPoints());
             }
             GetComponent<Text>().text = textValue;
         }
