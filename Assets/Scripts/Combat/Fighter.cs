@@ -4,10 +4,11 @@ using UnityEngine;
 using RPG.Resources;
 using RPG.Core;
 using RPG.Stats;
+using System.Collections.Generic;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] float timeBetweenAttacks = 1;
         [SerializeField] Transform rightHandTransform = null;
@@ -158,6 +159,14 @@ namespace RPG.Combat
             if (weapon)
             {
                 EquipWeapon(weapon);
+            }
+        }
+
+        public IEnumerable<float> GetAdditiveModifier(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetDamage();
             }
         }
     }
