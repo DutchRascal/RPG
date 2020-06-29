@@ -23,11 +23,15 @@ namespace RPG.Combat
 
         float timeSinceLastAttack = 0;
 
-        private void Start()
+        private void Awake()
         {
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
+        }
+
+        private void Start()
+        {
             if (!currentWeapon)
             {
                 EquipWeapon(defaultWeapon);
