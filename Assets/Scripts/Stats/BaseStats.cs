@@ -94,7 +94,6 @@ namespace RPG.Stats
                 float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
                 if (XPToLevelUp >= currentXP)
                 {
-                    print("Level: " + level);
                     return level;
                 }
             }
