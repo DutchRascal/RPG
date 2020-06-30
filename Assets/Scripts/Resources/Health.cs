@@ -1,4 +1,5 @@
 using System;
+using GameDevTV.Utils;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
@@ -10,25 +11,26 @@ namespace RPG.Resources
     {
         [SerializeField] float regenerationPercentage = 70;
 
-        float healthPoints = -1f;
+        LazyValue<float> healthPoints;
 
         bool isDead = false;
 
         BaseStats baseStats;
-        // float currentPercentage;
 
         private void Awake()
         {
+            healthPoints = new LazyValue<float>(GetInitHealth);
             baseStats = GetComponent<BaseStats>();
-
         }
 
         private void Start()
         {
-            if (healthPoints < 0)
-            {
-                healthPoints = baseStats.GetStat(Stat.Health);
-            }
+            healthPoints.ForceInit();
+        }
+
+        private float GetInitHealth()
+        {
+            return baseStats.GetStat(Stat.Health);
         }
 
         private void OnEnable()
@@ -44,8 +46,8 @@ namespace RPG.Resources
         public void TakeDamage(GameObject instigator, float damage)
         {
             print(gameObject.name + " took damage: " + damage);
-            healthPoints = Mathf.Max(0, healthPoints - damage);
-            if (healthPoints == 0)
+            healthPoints.value = Mathf.Max(0, healthPoints.value - damage);
+            if (healthPoints.value == 0)
             {
                 Die();
                 AwardExperience(instigator);
@@ -60,7 +62,7 @@ namespace RPG.Resources
         private void RegenerateHealth()
         {
             float regenHealthPoints = baseStats.GetStat(Stat.Health) * regenerationPercentage / 100;
-            healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
+            healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 
         private void Die()
@@ -82,7 +84,7 @@ namespace RPG.Resources
 
         public float GetHealthPoints()
         {
-            return healthPoints;
+            return healthPoints.value;
         }
 
         public float GetMaxHealthPoints()
@@ -98,13 +100,13 @@ namespace RPG.Resources
 
         public object CaptureState()
         {
-            return healthPoints;
+            return healthPoints.value;
         }
 
         public void RestoreState(object state)
         {
-            healthPoints = (float)state;
-            if (healthPoints <= 0)
+            healthPoints.value = (float)state;
+            if (healthPoints.value <= 0)
             {
                 SetDeathState();
                 GetComponent<Animator>().Play("Death", 0, 1);

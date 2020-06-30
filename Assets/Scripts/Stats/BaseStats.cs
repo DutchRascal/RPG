@@ -1,4 +1,5 @@
 using System;
+using GameDevTV.Utils;
 using RPG.Combat;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace RPG.Stats
         [SerializeField] GameObject levelUpParticleEffect;
         [SerializeField] bool shouldUseModifiers = false;
 
-        int currentLevel = 0;
+        LazyValue<int> currentLevel;
 
         Experience experience;
 
@@ -22,11 +23,12 @@ namespace RPG.Stats
         private void Awake()
         {
             experience = GetComponent<Experience>();
+            currentLevel = new LazyValue<int>(CalculateLevel);
         }
 
         private void Start()
         {
-            currentLevel = CalculateLevel();
+            currentLevel.ForceInit();
         }
 
         private void OnEnable()
@@ -48,9 +50,9 @@ namespace RPG.Stats
         private void UpdateLevel()
         {
             int newLevel = CalculateLevel();
-            if (newLevel > currentLevel)
+            if (newLevel > currentLevel.value)
             {
-                currentLevel = newLevel;
+                currentLevel.value = newLevel;
                 LevelUpEffect();
                 onLevelUp();
             }
@@ -73,11 +75,7 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
-            if (currentLevel < 1)
-            {
-                currentLevel = CalculateLevel();
-            }
-            return currentLevel;
+            return currentLevel.value;
         }
 
         private int CalculateLevel()
@@ -91,10 +89,12 @@ namespace RPG.Stats
                 float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
                 if (XPToLevelUp >= currentXP)
                 {
+                    print("Level: " + level);
                     return level;
                 }
             }
-            return penultimateLevel;
+            print("PenultimateLevel: " + penultimateLevel);
+            return penultimateLevel + 1;
         }
 
         private float GetAdditiveModifier(Stat stat)
