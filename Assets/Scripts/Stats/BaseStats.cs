@@ -47,6 +47,11 @@ namespace RPG.Stats
             }
         }
 
+        private void Update()
+        {
+            currentLevel.value = CalculateLevel();
+        }
+
         private void UpdateLevel()
         {
             int newLevel = CalculateLevel();
