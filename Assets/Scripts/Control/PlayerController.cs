@@ -3,6 +3,7 @@ using RPG.Combat;
 using RPG.Movement;
 using RPG.Resources;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
@@ -17,7 +18,8 @@ namespace RPG.Control
         {
             None,
             Movement,
-            Combat
+            Combat,
+            UI
         }
 
         [System.Serializable]
@@ -44,10 +46,25 @@ namespace RPG.Control
 
         void Update()
         {
-            if (health.IsDead()) { return; }
+            if (InteractWithUI()) { return; }
+            if (health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return;
+            }
             if (InteractWithCombat()) { return; }
             if (InteractWithMovement()) { return; }
             SetCursor(CursorType.None);
+        }
+
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithCombat()
