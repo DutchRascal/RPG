@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RPG.UI.DamageText
 {
@@ -6,12 +7,13 @@ namespace RPG.UI.DamageText
     {
         [SerializeField] DamageText damageTextPrefab = null;
 
-        public void Spawn(float damage)
+        public void Spawn(float damageAmount)
         {
             Vector3 spawnPositionCorrection;
             spawnPositionCorrection = new Vector3(0, -1, 0);
             DamageText instance = Instantiate<DamageText>(damageTextPrefab, transform);
             instance.transform.position += spawnPositionCorrection;
+            instance.SetValue(damageAmount);
         }
     }
 }

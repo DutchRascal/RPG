@@ -4,11 +4,11 @@ namespace RPG.UI.DamageText
 
     public class Destroyer : MonoBehaviour
     {
-        [SerializeField] GameObject targettoDestroy = null;
+        [SerializeField] GameObject targetToDestroy = null;
 
         public void DestroyTarget()
         {
-            Destroy(targettoDestroy);
+            Destroy(targetToDestroy);
         }
     }
 }
