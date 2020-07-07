@@ -6,14 +6,12 @@ namespace RPG.UI.DamageText
     {
         [SerializeField] DamageText damageTextPrefab = null;
 
-        private void Start()
+        public void Spawn(float damage)
         {
-            Spawn(11f);
-        }
-
-        private void Spawn(float damage)
-        {
+            Vector3 spawnPositionCorrection;
+            spawnPositionCorrection = new Vector3(0, -1, 0);
             DamageText instance = Instantiate<DamageText>(damageTextPrefab, transform);
+            instance.transform.position += spawnPositionCorrection;
         }
     }
 }
