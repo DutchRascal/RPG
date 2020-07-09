@@ -1,20 +1,21 @@
 namespace RPG.Attributes
 {
     using UnityEngine;
-    using UnityEngine.UI;
 
     public class HealthBar : MonoBehaviour
     {
         [SerializeField] Health healthComponent = null;
-        [SerializeField] RectTransform foreground=null;
+        [SerializeField] RectTransform foreground = null;
+        [SerializeField] Canvas rootCanvas = null;
 
-         private void Update()
+        private void Update()
         {
-            float healthFraction = healthComponent.GetFraction();
+            rootCanvas.gameObject.SetActive(true);
             foreground.localScale = new Vector3(healthComponent.GetFraction(), 1, 1);
-            if (healthFraction <= 0)
+            if (Mathf.Approximately(healthComponent.GetFraction() ,1) || 
+                Mathf.Approximately(healthComponent.GetFraction(), 0))
             {
-                gameObject.SetActive(false);
+                rootCanvas.gameObject.SetActive(false);
             }
         }
     }
