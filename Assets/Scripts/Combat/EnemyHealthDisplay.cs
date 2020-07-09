@@ -1,4 +1,4 @@
-using RPG.Resources;
+using RPG.Attributes;
 using RPG.Saving;
 using UnityEngine;
 using UnityEngine.UI;
