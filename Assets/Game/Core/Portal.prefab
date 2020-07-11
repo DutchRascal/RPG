@@ -109,5 +109,5 @@ MonoBehaviour:
   spawnPoint: {fileID: 9184087295480794954}
   destination: 0
   fadeOutTime: 0.5
-  fadeInTime: 1
+  fadeInTime: 2
   fadeWaitTime: 0.5
