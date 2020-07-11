@@ -7,7 +7,7 @@ namespace RPG.Core
     {
         Text text;
 
-        private void Update()
+        private void LateUpdate()
         {
             transform.forward = Camera.main.transform.forward;
         }
