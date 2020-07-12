@@ -6,7 +6,6 @@ using RPG.Core;
 using RPG.Stats;
 using System.Collections.Generic;
 using GameDevTV.Utils;
-using System;
 
 namespace RPG.Combat
 {
@@ -15,13 +14,13 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 1;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-        [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] WeaponConfig defaultWeapon = null;
 
         Health target;
         Mover mover;
         Animator animator;
         ActionScheduler actionScheduler;
-        LazyValue<Weapon> currentWeapon;
+        LazyValue<WeaponConfig> currentWeapon;
 
         float timeSinceLastAttack = 0;
 
@@ -30,10 +29,10 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
-            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+            currentWeapon = new LazyValue<WeaponConfig>(SetupDefaultWeapon);
         }
 
-        private Weapon SetupDefaultWeapon()
+        private WeaponConfig SetupDefaultWeapon()
         {
             AttachWeapon(defaultWeapon);
             return defaultWeapon;
@@ -144,14 +143,14 @@ namespace RPG.Combat
             return (targetToTest && !targetToTest.IsDead());
         }
 
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
         {
             if (!weapon) { return; }
             currentWeapon.value = weapon;
             AttachWeapon(weapon);
         }
 
-        private void AttachWeapon(Weapon weapon)
+        private void AttachWeapon(WeaponConfig weapon)
         {
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
@@ -171,7 +170,7 @@ namespace RPG.Combat
         {
             if (state == null) { return; }
             string weaponName = (string)state;
-            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
+            WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);
             if (weapon)
             {
                 EquipWeapon(weapon);
