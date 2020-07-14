@@ -1705,12 +1705,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: 55c66f9fc3207401b80a88f22aaaeb7c,
         type: 2}
-    - target: {fileID: 4076613834879609972, guid: 17231a9d913d14eda80745b78c9a6cef,
-        type: 3}
-      propertyPath: defaultWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 027e5b8bcd6ba4ba39fc5b49a7252b87,
-        type: 2}
     - target: {fileID: 2840888356609490120, guid: 17231a9d913d14eda80745b78c9a6cef,
         type: 3}
       propertyPath: m_IsTrigger
@@ -4839,16 +4833,6 @@ PrefabInstance:
       propertyPath: uniqueIdentifier
       value: 1f41865e-03b1-4e0a-b6e4-3b74b944f518
       objectReference: {fileID: 0}
-    - target: {fileID: 433775186198577337, guid: d0e278d090fa04fa38247803491b978c,
-        type: 3}
-      propertyPath: health
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 6789474629072522365, guid: d0e278d090fa04fa38247803491b978c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     - target: {fileID: 6060539296449835301, guid: d0e278d090fa04fa38247803491b978c,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4859,6 +4843,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 433775186198577337, guid: d0e278d090fa04fa38247803491b978c,
+        type: 3}
+      propertyPath: health
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789474629072522365, guid: d0e278d090fa04fa38247803491b978c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0e278d090fa04fa38247803491b978c, type: 3}
 --- !u!1 &2017844373
