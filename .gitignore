@@ -11,6 +11,7 @@
 /[Mm]emoryCaptures/
 /[Aa]ssets/[Bb]uild/
 /[Aa]ssets/[Bb]uilds/
+#/[Aa]ssets/Asset\ Packs/Not\ For\ Student\ Use\ \-\ licence\ required
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -59,3 +60,4 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+Assets/Asset Packs/Not For Student Use - licence required
