@@ -56,9 +56,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   suspicionTime: 5
+  aggroCooldownTime: 5
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointDwellTime: 3
+  shoutDistance: 5
   patrolSpeedFraction: 0.5
 --- !u!114 &8020775416421611857
 MonoBehaviour:
@@ -153,11 +155,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8618259030624634693, guid: 4acf77685ca64474e9fd40b8afdde748,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 2446919616114486658, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -213,24 +210,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 8618259030624634693, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: health
-      value: 40
+      propertyPath: m_Name
+      value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 44335210340184686, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 8618259030624634693, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: uniqueIdentifier
-      value: 
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 925524804, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
-      propertyPath: m_Speed
+    - target: {fileID: 8560034609758411303, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7614603475556069294, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 8560034609758411303, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: characterClass
-      value: 1
+      propertyPath: m_LocalPosition.y
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
@@ -246,8 +244,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 656a6a456cbda431da462b78cbebdaae,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4655803465313734247, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
       propertyPath: handTransform
@@ -269,15 +266,54 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: dbb295f9b7e754607a24cc9da72c0250,
         type: 2}
-    - target: {fileID: 8560034609758411303, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 7614603475556069294, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: m_RootOrder
+      propertyPath: characterClass
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8560034609758411303, guid: 4acf77685ca64474e9fd40b8afdde748,
+    - target: {fileID: 925524804, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 44335210340184686, guid: 4acf77685ca64474e9fd40b8afdde748,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.24
+      propertyPath: uniqueIdentifier
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 7873786122266694102}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316244035942303052, guid: 4acf77685ca64474e9fd40b8afdde748,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acf77685ca64474e9fd40b8afdde748, type: 3}

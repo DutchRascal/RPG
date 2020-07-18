@@ -53,7 +53,6 @@ namespace RPG.Attributes
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            // print(gameObject.name + " took damage: " + damage);
             healthPoints.value = Mathf.Max(0, healthPoints.value - damage);
             if (healthPoints.value == 0)
             {
